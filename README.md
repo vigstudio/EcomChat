@@ -1,86 +1,92 @@
-# ZaloCRM — Quản lý nhiều tài khoản Zalo cá nhân
+# EcomChat — Nền tảng Chat & Quản lý Khách Hàng (CRM) Zalo Đa Luồng
 
-Hệ thống quản lý tập trung nhiều tài khoản Zalo cá nhân trên 1 giao diện web. Chat real-time, quản lý khách hàng, lịch hẹn, báo cáo, API & Webhook.
+Hệ thống chuyên nghiệp giúp quản lý tập trung nhiều tài khoản Zalo cá nhân trên một giao diện web duy nhất. Hướng tới mô hình kinh doanh B2B SaaS với thiết kế **Flat Minimalist**, EcomChat cung cấp tính năng Chat real-time, phễu khách hàng (Pipeline CRM), lịch hẹn tự động, báo cáo phân tích, cùng hệ thống API & Webhook mở rộng mạnh mẽ.
 
-## Tính năng
+## ✨ Tính năng nổi bật
 
-- **Quản lý nhiều Zalo** — Đăng nhập QR, tự kết nối lại, lưu phiên đăng nhập
-- **Chat real-time** — Gửi/nhận tin nhắn, ảnh, file, sticker, nhóm chat
-- **Quản lý khách hàng** — Pipeline (Mới → Đã liên hệ → Quan tâm → Chuyển đổi → Mất)
-- **Lịch hẹn** — Tạo, theo dõi, nhắc nhở tự động hàng ngày
-- **Dashboard** — Biểu đồ tin nhắn, KPI, nguồn khách hàng, trạng thái pipeline
-- **Báo cáo** — Xuất Excel, lọc theo thời gian
-- **Phân quyền** — Owner / Admin / Member, quản lý đội nhóm, phân quyền Zalo
-- **API công khai** — REST API với xác thực API key cho tích hợp bên ngoài
-- **Webhook** — Nhận thông báo khi có tin nhắn mới, khách hàng mới, Zalo kết nối/ngắt
-- **Chống block Zalo** — Giới hạn 200 tin/ngày, phát hiện gửi quá nhanh
-- **Thông báo** — Tin chưa trả lời >30 phút, lịch hẹn sắp tới, Zalo mất kết nối
-- **Tìm kiếm toàn hệ thống** — Tìm khách hàng, tin nhắn, lịch hẹn
-- **Giao diện** — Theme tối/sáng, thiết kế Liquid Silicon
+- 🎨 **Giao diện B2B SaaS Hiện đại** — Thiết kế Dark/Light mode chuẩn Flat Minimalist, tối ưu không gian làm việc chuyên nghiệp (sử dụng *Plus Jakarta Sans*).
+- 🔗 **Quản lý Đa tài khoản Zalo** — Quét mã QR đăng nhập một lần, tự động kết nối lại (Auto-reconnect), lưu phiên đăng nhập vĩnh viễn hạn chế checkpoint.
+- 💬 **Chat Real-time Tốc độ cao** — Trải nghiệm nhắn tin mượt mà với khách hàng/nhóm chat. Hỗ trợ gửi ảnh, file, tài liệu, sticker.
+- 📊 **CRM & Phễu Khách Hàng (Pipeline)** — Quản lý vòng đời khách hàng theo luồng: `Mới → Đã liên hệ → Quan tâm → Chuyển đổi → Hủy/Mất`.
+- 📅 **Quản lý Lịch hẹn thông minh** — Tạo, theo dõi và nhắc báo tự động các lịch hẹn chốt sale / chăm sóc khách hàng hàng ngày.
+- 🛡️ **Hệ thống Phân Quyền Chặt Chẽ** — Cấp bậc Owner / Admin / Member. Cho phép chỉ định nhân viên cụ thể được quản lý/trả lời những tài khoản Zalo nào.
+- ⚡ **API & Webhook Tự Thời Gian Thực** — Tích hợp dễ dàng với hệ thống nội bộ (ERP, CRM bên thứ 3) với hệ REST API bảo mật qua API key và Webhook events (`message.received`, `contact.created`, v.v.).
+- 🤖 **Bảo vệ Tài khoản Zalo (Anti-block)** — Tự động throttle tin nhắn, cảnh báo gửi liên tục, giới hạn 200 tin/ngày bảo vệ tài khoản khỏi thuật toán Zalo.
+- 📈 **Báo Cáo & KPI Dashboard** — Trực quan hóa dữ liệu qua biểu đồ tin nhắn, hiệu suất sale, nguồn khách hàng, và chuyển đổi phễu CRM. Có thể xuất Excel dễ dàng.
 
-## Yêu cầu hệ thống
+## 💻 Yêu cầu Hệ thống
 
-| Thành phần | Tối thiểu | Khuyến nghị |
+Hệ thống được thiết kế tối giản, chạy 100% qua Container (Docker) để dễ dàng scale và quản trị trên mọi môi trường.
+
+| Thành phần | Cấu hình Tối thiểu | Khuyến nghị (Production) |
 |-----------|----------|------------|
-| CPU | 1 vCPU | 2-4 vCPU |
-| RAM | 1 GB | 4 GB |
-| Ổ cứng | 10 GB | 20 GB SSD |
-| Hệ điều hành | Ubuntu 20.04+ | Ubuntu 22.04 LTS |
-| Phần mềm | Docker + Docker Compose | Docker 24+ |
+| CPU | 1 vCore | 2 - 4 vCore |
+| RAM | 2 GB | 4 GB |
+| Ổ cứng | 10 GB SSD | 20 GB SSD |
+| Hệ điều hành | Ubuntu 20.04+ / Linux / Windows | Ubuntu 22.04 LTS |
+| Phụ thuộc | Docker & Docker Compose | Docker Engine 24+ |
 
-## Cài đặt nhanh
+## 🚀 Cài đặt & Triển khai nhanh
 
-> Hướng dẫn chi tiết: [HUONG-DAN-CAI-DAT.md](HUONG-DAN-CAI-DAT.md)
+> 📘 Xem tài liệu chi tiết hơn tại: [HUONG-DAN-CAI-DAT.md](HUONG-DAN-CAI-DAT.md)
 
+**1. Clone mã nguồn về máy / máy chủ:**
 ```bash
-git clone https://github.com/vuongnguyenbinh/ZaloCRM.git
-cd ZaloCRM
+git clone https://github.com/vigstudio/EcomChat.git
+cd EcomChat
+```
+
+**2. Cấu hình môi trường (Environment)**
+```bash
 cp .env.example .env
-# Sửa file .env — đặt mật khẩu và secret keys
+# Chỉnh sửa file .env để đổi lại JWT Secrets và Port mong muốn nếu cần
+```
+
+**3. Build và Khởi chạy với Docker**
+```bash
 docker compose up -d --build
 ```
 
-Truy cập **http://IP-server:3080** → Tạo tài khoản admin lần đầu.
+**4. Khởi tạo & Trải nghiệm**
+- Truy cập vào **http://localhost:3080** (hoặc IP-server:3080)
+- Hệ thống sẽ hiển thị màn hình cài đặt Admin cho lần chạy đầu tiên.
 
-## Công nghệ sử dụng
+## 🛠 Tech Stack (Ngăn xếp Công nghệ)
 
-| Thành phần | Công nghệ |
+EcomChat được xây dựng từ những công nghệ xử lý Node.js tiên tiến và tối ưu tài nguyên nhất hiện tại:
+
+| Lớp (Layer) | Công nghệ cốt lõi |
 |-----------|----------|
-| Backend | Node.js 20 / Fastify 5 / Prisma 7 |
-| Frontend | Vue 3 / Vuetify 3 / Chart.js / Pinia |
-| Cơ sở dữ liệu | PostgreSQL 16 |
-| Real-time | Socket.IO |
-| Zalo | zca-js 2.x |
-| Triển khai | Docker Compose |
+| **Backend** | Node.js 20, Fastify v5, Prisma ORM 5.x |
+| **Frontend** | Vue 3 (Composition API), Vuetify 3 (SaaS Theme), Pinia, Chart.js |
+| **Cơ sở dữ liệu** | PostgreSQL 16 (Relational Database) |
+| **Giao tiếp Real-time**| Socket.IO (WebSockets) |
+| **Zalo Client Protocol** | ZCA-js 2.x (Ngôn ngữ đảo ngược Web Zalo API) |
+| **Triển khai (Deploy)** | Đóng gói 100% bằng Docker và Multi-stage Dockerfile |
 
-## API & Webhook
+## 🔌 API & Webhook (Cho nhà phát triển)
 
-> Hướng dẫn chi tiết: [HUONG-DAN-SU-DUNG.md](HUONG-DAN-SU-DUNG.md)
-
-### Xác thực API
+### Xác thực API HTTP
+Mọi API Endpoint nội bộ (ngoài Web) đều yêu cầu Header xác thực như sau:
+```http
+Header: X-API-Key: your-api-key-here
 ```
-Header: X-API-Key: your-api-key
-```
 
-### Endpoint chính
-
-| Phương thức | Đường dẫn | Mô tả |
+### Các Endpoint chính
+| HTTP Method | URL Path | Chức năng mô tả |
 |------------|----------|-------|
-| GET | `/api/public/contacts` | Danh sách khách hàng |
-| POST | `/api/public/contacts` | Tạo khách hàng mới |
-| POST | `/api/public/messages/send` | Gửi tin nhắn |
-| GET | `/api/public/appointments` | Danh sách lịch hẹn |
+| `GET` | `/api/public/contacts` | Lấy danh sách khách hàng đang có |
+| `POST` | `/api/public/contacts` | Import / Tạo mới khách hàng từ bên ngoài |
+| `POST` | `/api/public/messages/send`| Bắn tin nhắn tự động từ tài khoản Zalo |
+| `GET` | `/api/public/appointments` | Trích xuất toàn bộ dữ liệu lịch hẹn CSKH |
 
-### Sự kiện Webhook
+### Webhook Events (Gửi Event qua Server của bạn)
+Khi sự kiện diễn ra trên EcomChat, Server sẽ lập tức POST payload sang Webhook URL bạn cấu hình:
+- `message.received`: Khách hàng nhắn tin tới một Zalo.
+- `message.sent`: Tin nhắn (Từ bạn hoặc kịch bản auto) được gửi đi.
+- `contact.created`: Khách hàng mới được thêm vào hệ thống / Mới làm quen.
+- `zalo.connected`: Một tài khoản cá nhân Zalo đăng nhập thành công.
+- `zalo.disconnected`: Tài khoản Zalo bị rớt session / bị logout.
 
-| Sự kiện | Mô tả |
-|---------|-------|
-| `message.received` | Tin nhắn mới đến |
-| `message.sent` | Tin nhắn gửi đi |
-| `contact.created` | Khách hàng mới |
-| `zalo.connected` | Zalo kết nối |
-| `zalo.disconnected` | Zalo mất kết nối |
-
-## Giấy phép
-
-MIT — Miễn phí sử dụng và chỉnh sửa.
+## 📜 Giấy phép & Bản quyền
+Dự án được phân phối dưới giấy phép **MIT**. Hoàn toàn miễn phí sử dụng cho cả mục đích thương mại và cá nhân. Mọi Pull Request đóng góp đều được hoan nghênh.
