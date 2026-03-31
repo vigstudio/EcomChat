@@ -1,52 +1,49 @@
 <template>
   <v-app :class="{ 'liquid-bg': isDark }">
-    <!-- Top bar — glass effect -->
-    <v-app-bar density="comfortable" flat>
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+    <!-- Top bar — flat effect -->
+    <v-app-bar density="comfortable" flat class="border-b">
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1" />
 
       <!-- AI Core Orb + Title -->
       <div class="d-flex align-center" style="gap: 12px;">
         <div
-          class="ai-core-orb d-flex align-center justify-center"
-          style="width: 32px; height: 32px; background: linear-gradient(135deg, #00F2FF, #0077B6);"
+          class="d-flex align-center justify-center rounded-lg"
+          style="width: 32px; height: 32px; background: rgb(var(--v-theme-primary)); color: rgb(var(--v-theme-on-primary));"
         >
-          <v-icon size="18" color="white">mdi-robot</v-icon>
+          <v-icon size="18">mdi-forum</v-icon>
         </div>
-        <v-app-bar-title>
-          <span class="font-weight-bold">Zalo</span><span style="color: #00F2FF;">CRM</span>
+        <v-app-bar-title class="pa-0">
+          <span class="font-weight-bold text-primary" style="font-size: 1.1rem">Zalo CRM</span>
         </v-app-bar-title>
       </div>
 
       <!-- Global search -->
-      <GlobalSearch class="mx-2" />
+      <GlobalSearch class="mx-4" />
 
       <v-spacer />
 
       <!-- Status indicator -->
       <div
-        class="d-flex align-center mr-4 px-3 py-1 rounded-pill"
-        style="background: rgba(76,175,80,0.1); border: 1px solid rgba(76,175,80,0.2);"
+        class="d-flex align-center mr-4 px-3 py-1 rounded-pill bg-surface"
+        style="border: 1px solid rgb(var(--v-theme-surface-variant));"
       >
-        <span
-          class="status-dot"
-          style="width: 8px; height: 8px; border-radius: 50%; background: #4CAF50; display: inline-block; margin-right: 8px;"
-        ></span>
-        <span class="text-caption font-weight-bold" style="color: #4CAF50; letter-spacing: 1px;">ONLINE</span>
+        <span class="status-dot mr-2"></span>
+        <span class="text-caption font-weight-bold text-success" style="letter-spacing: 0.5px;">ONLINE</span>
       </div>
 
-      <span class="text-body-2 mr-3" v-if="authStore.user">{{ authStore.user.fullName }}</span>
+      <span class="text-subtitle-2 font-weight-medium mr-3" v-if="authStore.user">{{ authStore.user.fullName }}</span>
       <NotificationBell />
-      <v-btn icon variant="text" @click="toggleTheme">
+      <v-btn icon variant="text" @click="toggleTheme" class="mr-1">
         <v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
       </v-btn>
-      <v-btn icon variant="text" @click="logout">
+      <v-btn icon variant="text" @click="logout" class="mr-2">
         <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
 
     <!-- Sidebar navigation -->
-    <v-navigation-drawer v-model="drawer" :rail="rail" permanent @click="rail = false">
-      <v-list density="compact" nav class="mt-2">
+    <v-navigation-drawer v-model="drawer" :rail="rail" permanent @click="rail = false" class="border-r pt-2">
+      <v-list density="compact" nav>
         <v-list-item
           v-for="item in menuItems"
           :key="item.path"
@@ -54,7 +51,7 @@
           :prepend-icon="item.icon"
           :title="item.title"
           :value="item.path"
-          rounded="xl"
+          rounded="lg"
           class="mb-1 mx-2"
         />
       </v-list>

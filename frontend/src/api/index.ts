@@ -20,7 +20,11 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
-      window.location.href = '/login';
+      // Prevent infinite reload loop if already on auth pages
+      const isAuthPage = window.location.pathname === '/login' || window.location.pathname === '/setup';
+      if (!isAuthPage) {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   },

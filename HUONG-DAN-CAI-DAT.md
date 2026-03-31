@@ -3,6 +3,7 @@
 ## Bước 1: Chuẩn bị VPS
 
 Bạn cần 1 VPS (máy chủ ảo) chạy Linux. Có thể dùng:
+
 - DigitalOcean, Vultr, Linode, AWS, Google Cloud, hoặc VPS Việt Nam
 
 **Cấu hình tối thiểu:** 1 vCPU, 1 GB RAM, 10 GB ổ cứng
@@ -84,6 +85,7 @@ docker compose up -d --build
 ```
 
 Chờ cho tới khi hiện:
+
 ```
 Container zalo-crm-app Started
 ```
@@ -181,6 +183,7 @@ Dữ liệu không bị mất — database lưu trong Docker volume.
 ## Sao lưu dữ liệu
 
 Hệ thống **tự động sao lưu** hàng ngày vào thư mục `backups/`:
+
 - Giữ 7 bản sao lưu hàng ngày
 - Giữ 4 bản sao lưu hàng tuần
 - Giữ 3 bản sao lưu hàng tháng

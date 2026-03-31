@@ -46,7 +46,7 @@
         <!-- Add access section -->
         <v-divider class="mb-3" />
         <div class="text-subtitle-2 mb-2">Thêm người dùng</div>
-        <div class="d-flex gap-2 align-start">
+        <div class="d-flex flex-wrap align-start mt-2">
           <v-select
             v-model="newUserId"
             :items="availableUsers"
@@ -57,7 +57,7 @@
             hide-details
             variant="outlined"
             no-data-text="Không có nhân viên để thêm"
-            class="flex-grow-1"
+            class="flex-grow-1 mr-3 mb-3"
           />
           <v-select
             v-model="newPermission"
@@ -69,8 +69,9 @@
             hide-details
             variant="outlined"
             style="min-width: 130px;"
+            class="mr-3 mb-3"
           />
-          <v-btn color="primary" :loading="saving" :disabled="!newUserId" @click="handleAddAccess">
+          <v-btn color="primary" variant="flat" :loading="saving" :disabled="!newUserId" class="mb-3" @click="handleAddAccess">
             Thêm
           </v-btn>
         </div>

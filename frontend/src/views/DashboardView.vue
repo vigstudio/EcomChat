@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h1 class="text-h4 mb-4">
-      <v-icon class="mr-2" style="color: #00F2FF;">mdi-view-dashboard</v-icon>
-      Dashboard
+    <h1 class="text-h5 font-weight-bold mb-6">
+      Tổng quan
     </h1>
     <v-progress-linear v-if="loading" indeterminate color="primary" class="mb-4" />
 

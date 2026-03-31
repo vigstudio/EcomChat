@@ -1,34 +1,36 @@
 <template>
   <div>
-    <div class="d-flex align-center mb-4">
-      <h1 class="text-h4">Tài khoản Zalo</h1>
+    <div class="d-flex align-center mb-6">
+      <h1 class="text-h5 font-weight-bold">Tài khoản Zalo</h1>
       <v-spacer />
-      <v-btn color="primary" prepend-icon="mdi-plus" @click="showAddDialog = true">Thêm Zalo</v-btn>
+      <v-btn color="primary" prepend-icon="mdi-plus" size="default" @click="showAddDialog = true">Thêm Zalo</v-btn>
     </div>
 
     <v-card>
       <v-data-table :headers="headers" :items="accounts" :loading="loading" no-data-text="Chưa có tài khoản Zalo nào">
         <template #item.status="{ item }">
-          <v-chip :color="statusColor(item.liveStatus || item.status)" size="small" variant="flat">
+          <v-chip :color="statusColor(item.liveStatus || item.status)" size="small" variant="tonal" label>
             {{ statusText(item.liveStatus || item.status) }}
           </v-chip>
         </template>
         <template #item.actions="{ item }">
-          <v-btn v-if="authStore.isAdmin" icon size="small" color="cyan" title="Phân quyền truy cập" @click="openAccess(item)">
-            <v-icon>mdi-shield-account</v-icon>
-          </v-btn>
-          <v-btn icon size="small" color="success" @click="syncContacts(item.id)" title="Đồng bộ danh bạ Zalo" :loading="syncing === item.id">
-            <v-icon>mdi-account-sync</v-icon>
-          </v-btn>
-          <v-btn v-if="item.liveStatus !== 'connected'" icon size="small" color="primary" @click="loginAccount(item.id)" title="Đăng nhập QR">
-            <v-icon>mdi-qrcode</v-icon>
-          </v-btn>
-          <v-btn v-if="item.liveStatus === 'disconnected' && item.sessionData" icon size="small" color="info" @click="reconnectAccount(item.id)" title="Kết nối lại">
-            <v-icon>mdi-refresh</v-icon>
-          </v-btn>
-          <v-btn icon size="small" color="error" @click="confirmDelete(item)" title="Xóa">
-            <v-icon>mdi-delete</v-icon>
-          </v-btn>
+          <div class="action-btn-group">
+            <v-btn v-if="authStore.isAdmin" icon variant="tonal" size="x-small" color="secondary" title="Phân quyền truy cập" @click="openAccess(item)">
+              <v-icon size="16">mdi-shield-account</v-icon>
+            </v-btn>
+            <v-btn icon variant="tonal" size="x-small" color="success" @click="syncContacts(item.id)" title="Đồng bộ danh bạ Zalo" :loading="syncing === item.id">
+              <v-icon size="16">mdi-account-sync</v-icon>
+            </v-btn>
+            <v-btn v-if="item.liveStatus !== 'connected'" icon variant="tonal" size="x-small" color="info" @click="loginAccount(item.id)" title="Đăng nhập QR">
+              <v-icon size="16">mdi-qrcode</v-icon>
+            </v-btn>
+            <v-btn v-if="item.liveStatus === 'disconnected' && item.sessionData" icon variant="tonal" size="x-small" color="info" @click="reconnectAccount(item.id)" title="Kết nối lại">
+              <v-icon size="16">mdi-refresh</v-icon>
+            </v-btn>
+            <v-btn icon variant="text" size="x-small" color="error" @click="confirmDelete(item)" title="Xóa">
+              <v-icon size="16">mdi-delete-outline</v-icon>
+            </v-btn>
+          </div>
         </template>
       </v-data-table>
     </v-card>
@@ -42,7 +44,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn @click="showAddDialog = false">Hủy</v-btn>
+          <v-btn variant="text" @click="showAddDialog = false">Hủy</v-btn>
           <v-btn color="primary" :loading="adding" @click="handleAddAccount">Thêm</v-btn>
         </v-card-actions>
       </v-card>
@@ -81,8 +83,8 @@
         <v-card-text>Bạn có chắc muốn xóa tài khoản "{{ deleteTarget?.displayName || deleteTarget?.id }}"?</v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn @click="showDeleteDialog = false">Hủy</v-btn>
-          <v-btn color="error" :loading="deleting" @click="handleDeleteAccount">Xóa</v-btn>
+          <v-btn variant="text" @click="showDeleteDialog = false">Hủy</v-btn>
+          <v-btn color="error" variant="tonal" :loading="deleting" @click="handleDeleteAccount">Xóa</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

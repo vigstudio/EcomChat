@@ -10,7 +10,7 @@
 
     <template v-else>
       <!-- Header -->
-      <div class="pa-3 d-flex align-center" style="border-bottom: 1px solid var(--border-glow, rgba(0,242,255,0.1));">
+      <div class="pa-3 d-flex align-center" style="border-bottom: 1px solid rgb(var(--v-theme-surface-variant));">
         <v-avatar size="36" color="grey-lighten-2" class="mr-3">
           <v-icon v-if="conversation.threadType === 'group'" icon="mdi-account-group" />
           <v-img v-else-if="conversation.contact?.avatarUrl" :src="conversation.contact.avatarUrl" />
@@ -33,7 +33,7 @@
         <v-progress-linear v-if="loading" indeterminate color="primary" class="mb-2" />
         <div v-for="msg in messages" :key="msg.id" class="mb-2 d-flex" :class="msg.senderType === 'self' ? 'justify-end' : 'justify-start'">
           <div style="max-width: 70%;">
-            <div v-if="conversation.threadType === 'group' && msg.senderType !== 'self'" class="text-caption mb-1" style="color: #00F2FF; font-weight: 500;">
+            <div v-if="conversation.threadType === 'group' && msg.senderType !== 'self'" class="text-caption mb-1 font-weight-medium" style="color: rgb(var(--v-theme-info));">
               {{ msg.senderName || 'Unknown' }}
             </div>
             <div class="message-bubble pa-2 px-3 rounded-lg" :class="msg.senderType === 'self' ? 'bg-primary text-white' : 'bg-white'" style="word-wrap: break-word;">
@@ -226,7 +226,7 @@ watch(() => props.messages.length, async () => { await nextTick(); if (messagesC
 <style scoped>
 .message-bubble { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); }
 .reminder-card { padding: 8px 12px; border-left: 3px solid #FFB74D; border-radius: 8px; background: rgba(255, 183, 77, 0.08); }
-.file-card { display: flex; align-items: center; padding: 8px 12px; border-radius: 8px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.1); }
+.file-card { display: flex; align-items: center; padding: 8px 12px; border-radius: 8px; background: rgba(var(--v-theme-on-surface), 0.04); border: 1px solid rgba(var(--v-theme-on-surface), 0.08); }
 .chat-image { max-width: 100%; max-height: 300px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; }
 .chat-image:hover { transform: scale(1.02); }
 </style>

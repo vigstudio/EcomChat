@@ -1,11 +1,13 @@
 <template>
   <v-row>
     <v-col v-for="card in cards" :key="card.title" cols="6" sm="4" md="2">
-      <v-card variant="outlined">
-        <v-card-text class="text-center pa-3">
-          <v-icon :icon="card.icon" :color="card.color" size="32" class="mb-1" />
-          <div class="text-h5 font-weight-bold">{{ card.value }}</div>
-          <div class="text-caption text-grey">{{ card.title }}</div>
+      <v-card variant="outlined" class="h-100">
+        <v-card-text class="pa-4 d-flex flex-column align-start">
+          <div class="d-flex w-100 justify-space-between align-center mb-2">
+            <div class="text-caption font-weight-medium text-secondary text-truncate pr-2" :title="card.title">{{ card.title }}</div>
+            <v-icon :icon="card.icon" :color="card.color" size="20" />
+          </div>
+          <div class="text-h5 font-weight-bold text-primary mt-auto">{{ card.value }}</div>
         </v-card-text>
       </v-card>
     </v-col>
